@@ -1,0 +1,112 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Astrophotography sensors and lights",
+        "description": "Pick outdoor temperature and humidity sensors to average. Blocked lights stay off during Astrophotography Mode. Dimmed lights are capped at the max brightness. Actuators (dew heaters, 12V relays, outlets) can turn on or off when dew risk becomes Unsafe, Safe, or both by putting them in multiple lists.",
+        "data": {
+          "outdoor_temp_sensors": "Outdoor temperature sensors",
+          "outdoor_humidity_sensors": "Outdoor humidity sensors",
+          "blocked_lights": "Lights to keep off in Astro Mode",
+          "dimmed_lights": "Lights to dim in Astro Mode",
+          "turn_on_when_unsafe": "Turn on when Unsafe",
+          "turn_off_when_unsafe": "Turn off when Unsafe",
+          "turn_on_when_safe": "Turn on when Safe",
+          "turn_off_when_safe": "Turn off when Safe"
+        }
+      },
+      "behavior": {
+        "title": "Dew risk and brightness",
+        "description": "Dew margin uses {unit}. Unsafe when outdoor air is within this many degrees of the dew point. Hysteresis stops the Safe/Unsafe edge from chattering. Max brightness caps dimmed lights while Astrophotography Mode is on.",
+        "data": {
+          "dew_margin_c": "Unsafe when dew margin is at or below",
+          "hysteresis_c": "Extra margin required before returning to Safe",
+          "max_brightness_pct": "Max brightness for dimmed lights",
+          "stale_minutes": "Ignore sensor readings older than"
+        }
+      }
+    },
+    "error": {
+      "threshold_positive": "Dew margin and hysteresis have to be greater than zero."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Astrophotography sensors and lights",
+        "description": "Sensors are averaged. A short dropout keeps the last reading until it is older than the stale window.",
+        "data": {
+          "outdoor_temp_sensors": "Outdoor temperature sensors",
+          "outdoor_humidity_sensors": "Outdoor humidity sensors",
+          "blocked_lights": "Lights to keep off in Astro Mode",
+          "dimmed_lights": "Lights to dim in Astro Mode",
+          "turn_on_when_unsafe": "Turn on when Unsafe",
+          "turn_off_when_unsafe": "Turn off when Unsafe",
+          "turn_on_when_safe": "Turn on when Safe",
+          "turn_off_when_safe": "Turn off when Safe"
+        }
+      },
+      "behavior": {
+        "title": "Dew risk and brightness",
+        "description": "Dew margin uses {unit}.",
+        "data": {
+          "dew_margin_c": "Unsafe when dew margin is at or below",
+          "hysteresis_c": "Extra margin required before returning to Safe",
+          "max_brightness_pct": "Max brightness for dimmed lights",
+          "stale_minutes": "Ignore sensor readings older than"
+        }
+      }
+    },
+    "error": {
+      "threshold_positive": "Dew margin and hysteresis have to be greater than zero."
+    }
+  },
+  "entity": {
+    "switch": {
+      "astro_mode": {
+        "name": "Astrophotography Mode"
+      }
+    },
+    "binary_sensor": {
+      "dew_unsafe": {
+        "name": "Dew Unsafe"
+      },
+      "session_active": {
+        "name": "Session active"
+      }
+    },
+    "sensor": {
+      "outdoor_temperature": {
+        "name": "Outdoor temperature"
+      },
+      "outdoor_humidity": {
+        "name": "Outdoor humidity"
+      },
+      "dew_point": {
+        "name": "Dew point"
+      },
+      "dew_margin": {
+        "name": "Dew margin"
+      },
+      "risk": {
+        "name": "Risk",
+        "state": {
+          "safe": "Safe",
+          "unsafe": "Unsafe",
+          "unknown": "Unknown"
+        }
+      },
+      "status": {
+        "name": "Status"
+      }
+    }
+  },
+  "device_automation": {
+    "trigger_type": {
+      "became_unsafe": "Became Unsafe",
+      "became_safe": "Became Safe",
+      "astro_mode_on": "Astrophotography Mode turned on",
+      "astro_mode_off": "Astrophotography Mode turned off"
+    }
+  }
+}
