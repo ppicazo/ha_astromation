@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from homeassistant.components.binary_sensor import (
-    BinarySensorDeviceClass,
     BinarySensorEntity,
     BinarySensorEntityDescription,
 )
@@ -18,7 +17,6 @@ from .entity import AstromationEntity
 _DEW_UNSAFE = BinarySensorEntityDescription(
     key="dew_unsafe",
     translation_key="dew_unsafe",
-    device_class=BinarySensorDeviceClass.MOISTURE,
     icon="mdi:water-alert",
 )
 

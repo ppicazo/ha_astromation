@@ -69,7 +69,11 @@
     },
     "binary_sensor": {
       "dew_unsafe": {
-        "name": "Dew Unsafe"
+        "name": "Dew Unsafe",
+        "state": {
+          "on": "Unsafe",
+          "off": "Safe"
+        }
       },
       "session_active": {
         "name": "Session active"
